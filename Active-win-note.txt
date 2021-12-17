@@ -1,0 +1,14 @@
+Xóa hết text
+Echo Stop Service Windows Update
+net stop wuauserv
+REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate /f /v AcceptTrustedPublisherCerts /t REG_DWORD /d 00000001
+REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate /f /v WUServer /t REG_SZ /d http://192.168.52.51:8530
+REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate /f /v WUStatusServer /t REG_SZ /d http://192.168.52.51:8530
+REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate /f /ve
+REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU /f /v NoAutoUpdate /t REG_DWORD /d 00000000
+REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU /f /v AUOptions /t REG_DWORD /d 00000003
+REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU /f /v ScheduledInstallDay /t REG_DWORD /d 00000000
+REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU /f /v ScheduledInstallTime /t REG_DWORD /d 00000003
+REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU /f /v AllowMUUpdateService /t REG_DWORD /d 00000001
+REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU /f /v UseWUServer /t REG_DWORD /d 00000001
+net start wuauserv
